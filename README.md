@@ -13,10 +13,10 @@
   </p>
 </p>
 
-## About
+## Hakkında
 
-Animechan is an anime quotes and information API service that provides developers with access to a vast curated collection of anime content. Our API delivers episode counts, detailed show summaries, character information, and memorable quotes from thousands of anime series.
+Animechan, geliştiricilere geniş ve özenle seçilmiş bir anime içeriği koleksiyonuna erişim sağlayan bir anime replikleri ve bilgi API servisidir. API'miz; binlerce anime dizisinden bölüm sayıları, ayrıntılı dizi özetleri, karakter bilgileri ve unutulmaz replikler sunmaktadır.
 
-## License
+## Lisans
 
 [MPL-2.0 license](./LICENSE) © 2025 [Rocktim Saikia](https://rocktim.dev)
