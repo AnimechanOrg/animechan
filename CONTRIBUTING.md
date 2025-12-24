@@ -1,58 +1,45 @@
 # Contribution guidelines
 
-### Pre-requisites
+## Pre-requisites
 
-> Assuming that [Node.js](https://nodejs.org/en/download/) is already installed.
+Assuming that Node.js is already installed.
 
-- [MongoDB](https://www.mongodb.com/docs/manual/installation/) : NoSQL database
-- [Mongosh](https://www.mongodb.com/docs/mongodb-shell/install/) : MongoDB shell
-- [Pnpm](https://pnpm.io/installation) : Package manager (optional but recommended)
+- **Pnpm**: Package manager (required)
 
-### Setup
+## Setup
 
-1. Install the dependencies.
+1. **Install the dependencies.**
 
-> This will install all the dependencies for both the backend and the frontend
+   This will install all the dependencies for the frontend project.
 
-```bash
-pnpm install:all
-```
+   ```bash
+   pnpm install
+   ```
 
-2. Make sure your MongoDB server is running.
+2. **Environment Variables**
 
-> This is for linux systems only. For windows, please refer to the official documentation.
+   Copy `.env.example` to `.env` and configure the necessary keys.
 
-```bash
-# Start the server
-sudo systemctl start mongod
+   ```bash
+   cp .env.example .env
+   ```
 
-# Check the status
-sudo systemctl status mongod
-```
+3. **Start the development server.**
 
-2. Seed the database with test data.
+   ```bash
+   pnpm dev
+   ```
 
-> You can find the initial seed data in `backend/scripts/test-data.json`. \
-> If needed you can also modify this file to add more data for testing purposes.
+## Development Workflow
 
-```bash
-pnpm backend:seed
-```
+1. Fork the repository and create your branch from `main`.
+2. Make your changes in a new branch.
+3. Ensure your code follows the project's style by running the formatter.
 
-3. Start the application.
+   ```bash
+   pnpm format
+   ```
 
-> This will start both the backend and the frontend servers in development mode concurrently.
+4. Create a Pull Request with a clear description of your changes.
 
-```bash
-pnpm start:dev
-```
-
-> If you want to start the backend and the frontend servers separately, you can use the following commands.
-
-```bash
-# Start the backend server
-pnpm backend:dev
-
-# Start the frontend server
-pnpm frontend:dev
-```
+> **Note**: This repository focuses on the frontend codebase. The backend codebase is private, so please ensure your contributions are related to the client-side application.
