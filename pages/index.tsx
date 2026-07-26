@@ -1,11 +1,10 @@
-import { Button, Callout, Flex, Heading, Link, Section, Text } from "@radix-ui/themes";
+import { Button, Callout, Heading, Link, Section, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { Element } from "react-scroll";
 import stringifyObject from "stringify-object";
 import Layout from "~/components/Layout";
 import CodeBlock from "~/components/codeblock";
 import Faq from "~/components/faq";
-import { FreePricingCard, PremiumPricingCard } from "~/components/pricing-cards";
 import type { CodeBlock as CodeBlockType } from "~/types";
 
 export default function Home() {
@@ -92,35 +91,11 @@ export default function Home() {
 				<Text size="6" weight="medium" as="p">
 					Pricing:
 				</Text>
-				<Text as="p" mt="2" mb="6">
+				<Text as="p" mt="2">
 					Free forever for 5 requests/hour. Animechan Premium is $5/month for 1,000 requests per
-					hour.
-				</Text>
-				<Flex
-					justify="center"
-					direction={{
-						xl: "row",
-						md: "row",
-						initial: "column",
-					}}
-					align="stretch"
-					gapX={{
-						lg: "8",
-						md: "8",
-						initial: "0",
-					}}
-					gapY={{
-						lg: "0",
-						md: "0",
-						initial: "8",
-					}}
-				>
-					<FreePricingCard />
-					<PremiumPricingCard />
-				</Flex>
-				<Text as="p" mt="6" className="text-center">
+					hour.{" "}
 					<Link href="/pricing" underline="always">
-						See full pricing and how it works →
+						See full pricing →
 					</Link>
 				</Text>
 			</Section>
