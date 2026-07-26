@@ -28,7 +28,7 @@ export default function TermsAndConditions() {
 								2. Description of Service
 							</Heading>
 							<Text as="p">
-								Animechan provides an API service that offers anime quotes, character information, and series data for developers to use in their applications. All API endpoints are free to use with rate limitations.
+								Animechan provides an API service that offers anime quotes, character information, and series data for developers to use in their applications. All API endpoints are free to use with rate limitations. Animechan Premium is an optional paid subscription ($5/month) that raises those limits.
 							</Text>
 						</div>
 
@@ -37,7 +37,7 @@ export default function TermsAndConditions() {
 								3. API Usage and Rate Limits
 							</Heading>
 							<Text as="p">
-								The free tier allows 5 API requests per hour with a 1-hour block if the limit is exceeded. Users who support Animechan receive an API key that enables 1000 requests per hour with a 5-minute block if the limit is exceeded.
+								The free tier allows 5 API requests per hour per IP address. Animechan Premium subscribers ($5/month) receive an API key that allows 1,000 requests per hour. Exceeding either limit results in a temporary block.
 							</Text>
 							<Text as="p" className="mt-2">
 								You agree not to attempt to circumvent these rate limits or use the API in a manner that could damage, disable, or impair our servers.

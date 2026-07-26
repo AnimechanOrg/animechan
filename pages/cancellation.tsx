@@ -20,10 +20,10 @@ export default function Cancellation() {
 					<div>
 						<h2 className="text-xl font-medium">2. Premium Subscribers</h2>
 						<p>
-							For premium subscribers, you may cancel your subscription at any time through your
-							account settings. Upon cancellation, your access to premium features will continue
-							until the end of your current billing cycle. No refunds will be provided for the
-							remaining period of the billing cycle.
+							Animechan Premium subscribers may cancel at any time through their{" "}
+							<span className="font-medium">Buy Me a Coffee</span> account settings. Premium access
+							ends when your subscription ends. No refunds will be provided for the remaining period
+							of the billing cycle.
 						</p>
 					</div>
 
