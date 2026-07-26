@@ -12,3 +12,19 @@ const response = fetch(`${BASE_URL}/quotes/random?anime=ReLIFE`, {
 });
 const quote = await response.json()
 ```
+
+## Rate limits
+
+| Request | Limit | When exceeded |
+| --- | --- | --- |
+| No API key | 5 requests per hour, per IP address | `429` |
+| Active Premium key | 1,000 requests per hour, per key | `429` |
+| Invalid, unknown, or cancelled key | Falls back to 5 requests per hour, per IP address | `429` |
+
+Exceeding a limit returns HTTP `429` with a JSON `message` field. Further requests
+are blocked for 5 minutes, after which you can call the API again.
+
+An unrecognised API key is **not** rejected with an authentication error. The API
+quietly applies the free IP-based limit instead. So if a key that used to work
+starts returning `429` after only a handful of requests, check that the Premium
+subscription behind it is still active.
