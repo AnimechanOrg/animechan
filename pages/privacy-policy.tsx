@@ -17,8 +17,8 @@ export default function PrivacyPolicy() {
 						1. Information We Collect
 					</Heading>
 					<p>
-						At Animechan, we only collects your email address when you subscribe and become a
-						premium member via our{" "}
+						At Animechan, we only collect your email address when you subscribe to Animechan Premium
+						via our{" "}
 						<Link href={BMAC_LINK} target="_blank" rel="noreferrer">
 							Buy Me A Coffee page
 						</Link>

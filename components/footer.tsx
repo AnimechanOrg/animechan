@@ -16,11 +16,17 @@ export default function Footer() {
 							<Link href="/docs">Documentation</Link>
 						</li>
 						<li>
-							<Link href="/support">Support Animechan</Link>
+							<Link href="/pricing">Pricing</Link>
 						</li>
-						{/* <li> */}
-						{/* 	<Link href="/docs">Blog</Link> */}
-						{/* </li> */}
+						<li>
+							<Link href="/terms">Terms</Link>
+						</li>
+						<li>
+							<Link href="/privacy-policy">Privacy Policy</Link>
+						</li>
+						<li>
+							<Link href="/cancellation">Cancellation Policy</Link>
+						</li>
 					</ul>
 					<ul className="space-y-1">
 						<li className="font-medium mb-2">Contact Us:</li>

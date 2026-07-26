@@ -1,4 +1,3 @@
-import { RocketIcon } from "@radix-ui/react-icons";
 import { Button, Flex, Link, Text } from "@radix-ui/themes";
 import { useWindowSize } from "@uidotdev/usehooks";
 
@@ -31,10 +30,8 @@ export default function Navbar({ isInDocsPage }: Props) {
 							</Button>
 						</a>
 
-						<a href="/support">
-							<Button>
-								Support Animechan <RocketIcon />
-							</Button>
+						<a href="/pricing">
+							<Button>Pricing</Button>
 						</a>
 					</Flex>
 				</div>

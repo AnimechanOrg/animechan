@@ -1,9 +1,7 @@
 import { Highlight, themes } from "prism-react-renderer";
-import { useId } from "react";
 import type { CodeBlock } from "~/types";
 
 export default function Codeblock({ language, snippet }: CodeBlock) {
-	const keyId = useId();
 	return (
 		<Highlight theme={themes.dracula} code={snippet} language={language}>
 			{({ className, style, tokens, getLineProps, getTokenProps }) => (
@@ -12,9 +10,9 @@ export default function Codeblock({ language, snippet }: CodeBlock) {
 					style={style}
 				>
 					{tokens.map((line, i) => (
-						<div {...getLineProps({ line, key: i })} key={keyId}>
+						<div {...getLineProps({ line })} key={i}>
 							{line.map((token, key) => (
-								<span {...getTokenProps({ token, key })} key={keyId} />
+								<span {...getTokenProps({ token })} key={key} />
 							))}
 						</div>
 					))}

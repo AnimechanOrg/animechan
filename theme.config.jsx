@@ -6,6 +6,14 @@ export default {
 	nextThemes: {
 		defaultTheme: "dark",
 	},
+	// Must match the page background (#25252b). Nextra paints its own chrome with
+	// rgb(var(--nextra-bg)) - the TOC heading shadow, sidebar footer, dropdowns -
+	// so leaving it at the default 17,17,17 draws near-black boxes on our lighter
+	// background.
+	backgroundColor: {
+		dark: "37,37,43",
+		light: "250,250,250",
+	},
 	navbar: {
 		component: <Navbar isInDocsPage={true} />,
 	},

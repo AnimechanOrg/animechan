@@ -9,4 +9,7 @@ export default withNextra({
 	compiler: {
 		removeConsole: process.env.NODE_ENV === "production",
 	},
+	async redirects() {
+		return [{ source: "/support", destination: "/pricing", permanent: true }];
+	},
 });

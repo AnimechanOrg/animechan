@@ -1,6 +1,5 @@
 import { Heading, Link } from "@radix-ui/themes";
 import type { ReactNode } from "react";
-import { useId } from "react";
 import type { FAQPage, WithContext } from "schema-dts";
 import { BMAC_LINK } from "~/constants/common";
 
@@ -42,38 +41,42 @@ export default function Faq() {
 				"Animechan is an anime quotes and information API service that provides developers with access to a vast curated collection of anime content. Our API delivers episode counts, detailed show summaries, character information, and memorable quotes from thousands of anime series. You can easily filter and search quotes by specific anime titles or character names, making it perfect for anime-focused applications and websites.",
 		},
 		{
-			question: "Is Animechan API free to use? What are the usage limits?",
+			question: "Is the Animechan API free? What are the rate limits?",
 			answer:
-				"Animechan API is completely free to use with all endpoints accessible to everyone. The free tier allows 5 API requests per hour with a 1-hour block if the limit is exceeded. For developers and applications requiring higher usage limits, we offer a supporter tier that provides 1000 API requests per hour with only a 5-minute block if the limit is exceeded. Your support helps keep Animechan running for the entire community.",
+				"Yes. Every endpoint is free to use with no signup and no API key, limited to 5 requests per hour per IP address. Animechan Premium raises that limit to 1,000 requests per hour for $5/month.",
 		},
 		{
-			question: "How do I get an API key for higher usage limits?",
+			question: "How do I get an API key for higher rate limits?",
 			answer: (
 				<>
-					To get an API key with higher usage limits, you can become a supporter by subscribing to our monthly
-					membership plan through our {BMAC_CTA} page. Once subscribed, we'll provide you with a unique API key
-					that unlocks 1000 requests per hour. Please note that this is a recurring monthly subscription,
-					not a one-time payment. Visit our{" "}
-					<Link href="/support" underline="always">
-						/support
+					Subscribe to Animechan Premium for $5/month on our {BMAC_CTA} page. Your personal API key
+					is emailed to you as soon as the subscription starts, and it raises your limit to 1,000
+					requests per hour. Note that this is a recurring monthly subscription, not a one-time
+					payment. See our{" "}
+					<Link href="/pricing" underline="always">
+						pricing page
 					</Link>{" "}
-					page for detailed information about the benefits of supporting Animechan.
+					for details, and the{" "}
+					<Link href="/docs/auth" underline="always">
+						auth docs
+					</Link>{" "}
+					for how to send the key.
 				</>
 			),
 			jsonLdAnswer:
-				"To get an API key with higher usage limits, you can become a supporter by subscribing to our monthly membership plan through our Buy Me A Coffee page. Once subscribed, we'll provide you with a unique API key that unlocks 1000 requests per hour. Please note that this is a recurring monthly subscription, not a one-time payment. Visit our /support page for detailed information about the benefits of supporting Animechan.",
+				"Subscribe to Animechan Premium for $5/month on our Buy Me A Coffee page. Your personal API key is emailed to you as soon as the subscription starts, and it raises your limit to 1,000 requests per hour. Note that this is a recurring monthly subscription, not a one-time payment. See our /pricing page for details, and the /docs/auth page for how to send the key.",
 		},
 		{
-			question: "What is Animechan's subscription cancellation policy?",
+			question: "Can I cancel Animechan Premium?",
 			answer: (
 				<>
-					You can cancel your Animechan Premium subscription at any time through your{" "}
-					<span className="font-medium">“Buy Me A Coffee”</span> account settings. Upon
-					cancellation, your premium API key access will be automatically revoked
+					Yes, at any time from your <span className="font-medium">“Buy Me A Coffee”</span> account
+					settings. Premium access ends when your subscription ends - there is no long-term
+					commitment.
 				</>
 			),
 			jsonLdAnswer:
-				"You can cancel your Animechan Premium subscription at any time through your “Buy Me A Coffee” account settings. Upon cancellation, your premium API key access will be automatically revoked",
+				"Yes, at any time from your “Buy Me A Coffee” account settings. Premium access ends when your subscription ends - there is no long-term commitment.",
 		},
 	];
 
@@ -88,7 +91,7 @@ export default function Faq() {
 			/>
 			<Heading as="h3">Frequently Asked Questions:</Heading>
 			{FAQs.map(({ question, answer }) => (
-				<section key={useId()}>
+				<section key={question}>
 					<Heading as="h4" size="5" mb="2">
 						{question}
 					</Heading>
