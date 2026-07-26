@@ -1,0 +1,8 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+# Netlify has no pinned pnpm version otherwise, so its default moves under us.
+# Node is pinned by .nvmrc, deliberately left as the single source of truth.
+[build.environment]
+  PNPM_VERSION = "10.13.1"
