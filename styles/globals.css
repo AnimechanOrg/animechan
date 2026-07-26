@@ -24,6 +24,14 @@ div[dir="ltr"] {
 	background-color: #25252b !important;
 }
 
+/* Nextra's dark-mode border for these sticky footers is overridden by its own
+   later rule setting rgb(163 163 163), so they draw a light grey hairline on our
+   dark palette. Replace it with a faint divider. */
+.nextra-sidebar-footer,
+.nextra-toc-footer {
+	border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
 @layer base {
 	/* a { */
 	/* 	@apply underline text-green-700; */
