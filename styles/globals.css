@@ -15,22 +15,243 @@ body {
 	margin: 0;
 }
 
+
+
 main {
 	flex: 1;
 }
 
+/* ─── Fumadocs Theme Tokens (HSL values for Tailwind) ─── */
+:root {
+  --fd-background: 0 0% 100%;
+  --fd-foreground: 210 14% 14%;
+  --fd-muted: 210 18% 97%;
+  --fd-muted-foreground: 213 8% 43%;
+  --fd-popover: 0 0% 100%;
+  --fd-popover-foreground: 210 14% 14%;
+  --fd-card: 210 18% 97%;
+  --fd-card-foreground: 210 14% 14%;
+  --fd-border: 214 13% 84%;
+  --fd-primary: 23 78% 50%;
+  --fd-primary-foreground: 0 0% 100%;
+  --fd-secondary: 210 16% 93%;
+  --fd-secondary-foreground: 210 14% 14%;
+  --fd-accent: 210 16% 93%;
+  --fd-accent-foreground: 210 14% 14%;
+  --fd-ring: 23 78% 50%;
 
-div[dir="ltr"] {
-	background-color: #25252b !important;
+  --shiki-light-bg: #f6f8fa;
+  --shiki-dark-bg: #060608;
 }
 
-/* Nextra's dark-mode border for these sticky footers is overridden by its own
-   later rule setting rgb(163 163 163), so they draw a light grey hairline on our
-   dark palette. Replace it with a faint divider. */
-.nextra-sidebar-footer,
-.nextra-toc-footer {
-	border-color: rgba(255, 255, 255, 0.08) !important;
+.dark {
+  --fd-background: 0 0% 0%;
+  --fd-foreground: 0 0% 98%;
+  --fd-muted: 0 0% 7%;
+  --fd-muted-foreground: 0 0% 60%;
+  --fd-popover: 0 0% 4%;
+  --fd-popover-foreground: 0 0% 98%;
+  --fd-card: 0 0% 3%;
+  --fd-card-foreground: 0 0% 98%;
+  --fd-border: 0 0% 15%;
+  --fd-primary: 25 88% 59%;
+  --fd-primary-foreground: 0 0% 0%;
+  --fd-secondary: 0 0% 5%;
+  --fd-secondary-foreground: 0 0% 98%;
+  --fd-accent: 0 0% 9%;
+  --fd-accent-foreground: 0 0% 98%;
+  --fd-ring: 25 88% 59%;
+
+  --shiki-light-bg: #f6f8fa;
+  --shiki-dark-bg: #060608;
 }
+
+html.dark,
+html.dark body {
+  background-color: #000000 !important;
+  color-scheme: dark;
+}
+
+html:not(.dark),
+html:not(.dark) body {
+  background-color: #ffffff;
+  color-scheme: light;
+}
+
+/* ─── Metal Black Left Sidebar ─── */
+html.dark [data-fd-sidebar],
+html.dark aside,
+html.dark aside[aria-label],
+html.dark #nd-sidebar,
+html.dark nav {
+  background-color: #000000 !important;
+  border-right-color: #1e1e24 !important;
+}
+
+html:not(.dark) [data-fd-sidebar],
+html:not(.dark) aside,
+html:not(.dark) aside[aria-label],
+html:not(.dark) #nd-sidebar,
+html:not(.dark) nav {
+  background-color: #f6f8fa !important;
+  border-right-color: #d0d7de !important;
+}
+
+/* ─── Code blocks & Syntax Highlighting ─── */
+html.dark figure,
+html.dark figure.fd-codeblock,
+html.dark figure[data-rehype-pretty-code-figure],
+html.dark pre,
+html.dark pre.shiki,
+html.dark pre code {
+  background-color: #08080a !important;
+  color: #f4f4f5 !important;
+  border-color: #1e1e24 !important;
+}
+
+html.dark figure div,
+html.dark figure div pre,
+html.dark .fd-codeblock pre,
+html.dark figure pre {
+  background-color: #08080a !important;
+}
+
+html.dark .shiki code span,
+html.dark pre code span,
+html.dark pre span {
+  color: var(--shiki-dark, #f4f4f5);
+}
+
+html:not(.dark) figure,
+html:not(.dark) figure.fd-codeblock,
+html:not(.dark) figure[data-rehype-pretty-code-figure],
+html:not(.dark) pre,
+html:not(.dark) pre.shiki,
+html:not(.dark) pre code {
+  background-color: #f6f8fa !important;
+  color: #1f2328 !important;
+  border-color: #d0d7de !important;
+}
+
+html:not(.dark) figure div,
+html:not(.dark) figure div pre,
+html:not(.dark) .fd-codeblock pre,
+html:not(.dark) figure pre {
+  background-color: #f6f8fa !important;
+}
+
+html:not(.dark) .shiki code span,
+html:not(.dark) pre code span,
+html:not(.dark) pre span {
+  color: var(--shiki-light, #1f2328);
+}
+
+/* ─── Callouts in Dark Mode ─── */
+html.dark [data-card],
+html.dark .fd-card,
+html.dark [class*="callout"] {
+  background-color: #08080b !important;
+  border-color: #1e1e24 !important;
+}
+
+/* ─── Metal Black Tables & Table Headers ─── */
+html.dark table,
+html.dark .prose table,
+html.dark .fd-prose table {
+  border-color: #24242a !important;
+  background-color: #050507 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid #24242a !important;
+}
+
+html.dark thead,
+html.dark thead th,
+html.dark th,
+html.dark table th,
+html.dark .prose thead th,
+html.dark .fd-prose thead th,
+html.dark .prose th,
+html.dark .fd-prose th {
+  background-color: #121216 !important;
+  color: #f4f4f5 !important;
+  border-bottom: 1px solid #24242a !important;
+  border-color: #24242a !important;
+  font-weight: 600 !important;
+}
+
+html.dark tbody,
+html.dark tbody tr,
+html.dark td,
+html.dark table td,
+html.dark .prose tbody tr,
+html.dark .fd-prose tbody tr,
+html.dark .prose td,
+html.dark .fd-prose td {
+  background-color: #060608 !important;
+  color: #d4d4d8 !important;
+  border-bottom: 1px solid #1c1c22 !important;
+  border-color: #1c1c22 !important;
+}
+
+html:not(.dark) table {
+  border-color: #d0d7de !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  border: 1px solid #d0d7de !important;
+}
+
+html:not(.dark) thead,
+html:not(.dark) thead th,
+html:not(.dark) th,
+html:not(.dark) table th,
+html:not(.dark) .prose thead th,
+html:not(.dark) .fd-prose thead th {
+  background-color: #f6f8fa !important;
+  color: #1f2328 !important;
+  border-bottom: 1px solid #d0d7de !important;
+  border-color: #d0d7de !important;
+  font-weight: 600 !important;
+}
+
+html:not(.dark) tbody tr,
+html:not(.dark) td,
+html:not(.dark) table td,
+html:not(.dark) .prose td,
+html:not(.dark) .fd-prose td {
+  background-color: #ffffff !important;
+  color: #24292f !important;
+  border-bottom: 1px solid #e1e4e8 !important;
+  border-color: #e1e4e8 !important;
+}
+
+/* ─── Inline Code Badges ─── */
+html.dark :not(pre) > code {
+  background-color: rgba(240, 136, 62, 0.12) !important;
+  color: #f0883e !important;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  border: 1px solid rgba(240, 136, 62, 0.22);
+}
+
+html:not(.dark) :not(pre) > code {
+  background-color: rgba(217, 109, 39, 0.1) !important;
+  color: #c9510c !important;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  border: 1px solid rgba(217, 109, 39, 0.15);
+}
+
+
+
+
+
 
 @layer base {
 	/* a { */

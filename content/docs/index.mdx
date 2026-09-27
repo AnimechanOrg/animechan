@@ -1,0 +1,247 @@
+---
+title: "Animechan API docs"
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout title="Info" type="info">
+All API endpoints are free to use with a default rate limit of 5 requests per hour. Need 1,000 requests per hour? [Get Animechan Premium](/pricing) for $5/month.
+</Callout>
+
+<Callout title="Info" type="info">
+The Base URL (`BASE_URL`) for all API endpoints is: **`https://api.animechan.io/v1`**
+</Callout>
+
+Here you will find all the currently available resources and API endpoints from Animechan. The API project is still under active development so expect to see new changes and features every week.
+
+Animechan provides RESTful endpoints to fetch anime quotes, characters, and related information. The API returns responses in JSON format. We are using the built-in global `fetch` API for examples, but you can use any other programming language or request library.
+
+---
+
+## Authentication
+
+All API endpoints are free to use, with a limit of 5 API requests per hour. For 1,000 requests per hour, subscribe to [Animechan Premium](/pricing) ($5/month) and you'll receive an API key by email. Send it in the `x-api-key` header to access the API with the higher rate limit.
+
+Here is how to authenticate using a secret API key:
+
+```js
+const response = fetch(`${BASE_URL}/quotes/random?anime=ReLIFE`, {
+		headers: {
+				'x-api-key': 'YOUR_API_KEY',
+		},
+});
+const quote = await response.json()
+```
+
+### Rate limits
+
+| Request | Limit | When exceeded |
+| --- | --- | --- |
+| No API key | 5 requests per hour, per IP address | `429` |
+| Active Premium key | 1,000 requests per hour, per key | `429` |
+| Invalid, unknown, or cancelled key | Falls back to 5 requests per hour, per IP address | `429` |
+
+Exceeding a limit returns HTTP `429` with a JSON `message` field. Further requests
+are blocked for 5 minutes, after which you can call the API again.
+
+An unrecognised API key is **not** rejected with an authentication error. The API quietly applies the free IP-based limit instead. So if a key that used to work starts returning `429` after only a handful of requests, check that the Premium subscription behind it is still active.
+
+---
+
+## Anime
+
+### Get information of a given Anime
+
+It accepts a valid anime ID or name as a path parameter in the endpoint and returns all information on that anime.
+
+> Even though both of the approaches work, querying an anime information via anime ID is generally recommended for more accurate and faster response. Using anime name can lead to inaccurate results if the name does not match properly.
+
+**Endpoint:**
+```http
+GET /anime/<anime_id>
+GET /anime/<anime_name>
+```
+
+**Response:**
+```json
+{
+  "status": "success",
+  "data": {
+    "id": 188,
+    "name": "One Punch Man",
+    "episodeCount": 12,
+    "summary": "The seemingly unimpressive Saitama has a rather unique hobby: being a hero..."
+  }
+}
+```
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/anime/188`)
+// or
+const response = await fetch(`${BASE_URL}/anime/One Punch Man`)
+
+const quote = await response.json()
+```
+
+---
+
+## Quotes
+
+### `Quote` object
+
+This is the JSON structure that gets returned for all `/quotes` endpoints.
+
+```json
+{
+	"status": "success",
+	"data": {
+		"content": "Whenever I counted on someone, I ended up getting hurt.",
+		"anime": {
+			"id": 2,
+			"name": "Hanasaku Iroha"
+		},
+		"character": {
+			"id": 5,
+			"name": "Ohana Matsumae"
+		}
+	}
+}
+```
+
+### Get a random quote
+
+This endpoint simply returns a random quote from any anime/character.
+
+**Endpoint:**
+```http
+GET /quotes/random
+```
+
+**Response:**
+It will return a `Quote` object.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes/random`)
+const quote = await response.json()
+```
+
+### Get a random quote via Anime
+
+This endpoint returns a random quote from a given Anime name.
+
+**Endpoint:**
+```http
+GET /quotes/random?anime=<anime_name>
+```
+
+**Query Parameters:**
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `anime` | `string` | The name of the anime. |
+
+**Response:**
+It will return a `Quote` object.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes/random?anime=ReLife`)
+const quote = await response.json()
+```
+
+### Get a random quote via Character
+
+This endpoint returns a random quote from a given character name.
+
+**Endpoint:**
+```http
+GET /quotes/random?character=<character>
+```
+
+**Query Parameters:**
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `character` | `string` | The name of the character. |
+
+**Response:**
+It will return a `Quote` object.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes/random?character=Saitama`)
+const quote = await response.json()
+```
+
+### Get quotes from an Anime
+
+This endpoint returns 5 ordered quotes from a given Anime name.
+
+**Endpoint:**
+```http
+GET /quotes/?anime=<anime_name>
+```
+
+**Query Parameters:**
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `anime` | `string` | The name of the anime. |
+
+**Response:**
+It will return an `array` of `Quote` objects.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes?anime=ReLIFE`)
+const quote = await response.json()
+```
+
+### Get quotes from a Character
+
+This endpoint returns 5 ordered quotes from a given Character name.
+
+**Endpoint:**
+```http
+GET /quotes/?character=<character>
+```
+
+**Query Parameters:**
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `character` | `string` | The name of the character. |
+
+**Response:**
+It will return an `array` of `Quote` objects.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes?character=Saitama`)
+const quote = await response.json()
+```
+
+### Pagination
+
+Pagination is supported on a few endpoints that return an array instead of a single object.
+Currently supported pagination endpoints:
+1. Get quotes by anime
+2. Get quotes by character
+
+**Endpoint:**
+```http
+GET /quotes/?anime=<anime>&page=<page_number>
+```
+
+**Query Parameters:**
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `anime` (or `character`) | `string` | The name to filter by. |
+| `page` | `number` | The page number (starts at 1). |
+
+**Response:**
+It will return an `array` of `Quote` objects.
+
+**Example:**
+```js
+const response = await fetch(`${BASE_URL}/quotes?anime=${animeName}&page=2`)
+const quote = await response.json()
+```
