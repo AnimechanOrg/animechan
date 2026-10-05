@@ -1,15 +1,15 @@
-import nextra from "nextra";
+import { createMDX } from 'fumadocs-mdx/next';
 
-const withNextra = nextra({
-	theme: "nextra-theme-docs",
-	themeConfig: "./theme.config.jsx",
-});
+const withMDX = createMDX();
 
-export default withNextra({
-	compiler: {
-		removeConsole: process.env.NODE_ENV === "production",
-	},
-	async redirects() {
-		return [{ source: "/support", destination: "/pricing", permanent: true }];
-	},
-});
+/** @type {import('next').NextConfig} */
+const config = {
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  async redirects() {
+    return [{ source: '/support', destination: '/pricing', permanent: true }];
+  },
+};
+
+export default withMDX(config);

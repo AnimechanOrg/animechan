@@ -25,7 +25,7 @@ export default function Navbar({ isInDocsPage }: Props) {
 						<a href="/docs">
 							<Button variant="ghost">
 								<Text weight="medium" size="3">
-									{windowSize.width <= 500 ? "Docs" : "Documentation"}
+									{(windowSize.width ?? 0) <= 500 ? "Docs" : "Documentation"}
 								</Text>
 							</Button>
 						</a>
