@@ -26,29 +26,6 @@
 
 For Premium subscription or API key problems, email `animechan@rocktim.dev` instead of opening a public issue, so your key and email address stay private.
 
-## Using the API
-
-No signup or API key is needed. Get a random quote:
-
-```sh
-curl https://api.animechan.io/v1/quotes/random
-```
-
-```json
-{
-  "status": "success",
-  "data": {
-    "content": "Courage is a word of justice. It means the quality of mind that enables one to face apprehension with confidence and resolution. It is not right to use it as an excuse to kill someone.",
-    "anime": { "id": 271, "name": "Case Closed", "altName": "Meitantei Conan" },
-    "character": { "id": 318, "name": "Ran Mouri" }
-  }
-}
-```
-
-You can also filter quotes by anime or character, page through results, and look up anime details. The free tier allows 100 requests a day. [Premium](https://animechan.io/pricing) raises that to 1,000 requests an hour for $5/month.
-
-See the [documentation](https://animechan.io/docs) for every endpoint.
-
 ## License
 
 [MPL-2.0 license](./LICENSE) © 2025 [Rocktim Saikia](https://rocktim.dev)
