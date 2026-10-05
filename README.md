@@ -24,8 +24,6 @@
 - **Request an anime** that is missing or has too few quotes: [anime requests](https://github.com/AnimechanOrg/animechan/discussions/65)
 - **Suggest a feature**: [open an issue](https://github.com/AnimechanOrg/animechan/issues/new)
 
-For Premium subscription or API key problems, email `animechan@rocktim.dev` instead of opening a public issue, so your key and email address stay private.
-
 ## License
 
 [MPL-2.0 license](./LICENSE) © 2025 [Rocktim Saikia](https://rocktim.dev)
