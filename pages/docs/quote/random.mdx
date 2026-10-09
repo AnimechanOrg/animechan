@@ -14,6 +14,7 @@ It will return a [`Quote`](/quote) object
 > We are using the built-in global `fetch` API here, which is both available in browser and NodeJS as of now. But you can use any other programming language or request lib.
 
 ```js
-const response = await fetch('/quotes/random')
+const BASE_URL = 'https://api.animechan.io/v1'
+const response = await fetch(`${BASE_URL}/quotes/random`)
 const quote = await response.json()
 ```
